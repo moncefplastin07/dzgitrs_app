@@ -3,8 +3,8 @@ export default function UserColumn(userInfo) {
   return (
     <tr className='border-dotted border-b-2 border-light-blue-100'>
       <td>{userInfo.score}</td>
-      <td className="text-left"><a href={userInfo.githubURL}><b className='text-gray-800 hover:text-gray-600'>{userInfo.githubUsername}</b>
-      <p className="text-gray-400 ml-2 text-xs font-bold">({userInfo.githubName || "Doesn't have a name ☹"})</p>
+      <td className="text-left"><a href={userInfo.githubURL}><b className='text-gray-800 hover:text-gray-600'>{userInfo.githubUsername.length > 22 ? `${userInfo.githubUsername.substring(0,20)}...` : userInfo.githubUsername}</b>
+      <p className="text-gray-400 ml-2 text-xs font-bold">({(userInfo.githubName.length > 25 ? `${userInfo.githubName.substring(0,20)}...` : userInfo.githubName) || "Doesn't have a name ☹"})</p>
       </a></td>
       <td>{userInfo.contribs}</td>
       <td>
