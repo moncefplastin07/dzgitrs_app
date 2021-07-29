@@ -28,7 +28,7 @@ export default function Home(data) {
         <div className="flex flex-wrap items-center justify-around max-w-4xl mt-6 sm:w-full">
           <table>
             <thead>
-              <tr className="border-dotted border-b-2 border-light-blue-100">
+              <tr>
                 <th>Score</th>
                 <th>User</th>  
                 <th>Contribs</th>
@@ -44,7 +44,7 @@ export default function Home(data) {
         </div>
       </main>
 
-      <footer className="font-mono flex items-center flex-col justify-center w-full h-24 border-t mt-10">
+      <footer className="font-mono flex items-center flex-col justify-center w-full h-24 border-t text-center">
       <p className="my-5 text-1xl">
           <span className="text-lg bg-gray-100 rounded-md font-bold">
             Note:
