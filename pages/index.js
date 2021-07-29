@@ -68,7 +68,7 @@ export default function Home(data) {
 }
 
 export async function getStaticProps(context) {
-  const res = await fetch(`https://dzgitrs.herokuapp.com/`)
+  const res = await fetch(`https://dzgitrs.herokuapp.com/algeria`)
   const data = await res.json()
 
   if (!data) {
