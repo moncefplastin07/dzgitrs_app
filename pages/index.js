@@ -12,7 +12,7 @@ export default function Home(data) {
       </Head>
 
       <main className="flex flex-col items-center justify-center flex-1 text-center">
-        <h1 className="text-6xl font-bold">
+        <h1 className="text-4xl font-bold lg:text-6xl">
           Welcome to{' '}
           <span className="text-green-600">
             DZGitrs!
