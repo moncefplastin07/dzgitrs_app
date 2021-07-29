@@ -4,7 +4,7 @@ import UserColumn from "../components/UserColumn.js";
 export default function Home(data) {
   const { users, header } = data.data
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2">
+    <div className="font-mono flex flex-col items-center justify-center min-h-screen py-2">
       <Head>
         <title>DZGitrs - The most active GitHub users in Algeria</title>
         <link rel="icon" href="/favicon.ico" />
