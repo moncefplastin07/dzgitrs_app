@@ -7,7 +7,7 @@ export default function Home(data) {
     <div className="font-mono flex flex-col items-center justify-center min-h-screen py-2">
       <Head>
         <title>DZGitrs - The most active GitHub users in Algeria</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
