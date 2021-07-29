@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import TimeAgo from 'react-timeago'
-import UserColumn from "components/userColumn.js";
+import UserColumn from "../components/UserColumn.js";
 export default function Home(data) {
   const { users, header } = data.data
   return (
