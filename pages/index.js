@@ -32,7 +32,7 @@ export default function Home(data) {
                 <th>Score</th>
                 <th>User</th>  
                 <th>Contribs</th>
-                <th className='w-28'>Avatar</th>
+                <th className='w-28 sm:w-24'>Avatar</th>
               </tr>
             </thead>
             <tbody> 
