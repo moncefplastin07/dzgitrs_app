@@ -1,12 +1,14 @@
 import Head from 'next/head'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
 import TimeAgo from 'react-timeago'
 import UserColumn from "../components/UserColumn.js";
 export default function Home(data) {
-  const { users, header } = data.data
+  const { countriesList } = data
   return (
     <div className="font-mono flex flex-col items-center justify-center min-h-screen py-2">
       <Head>
-        <title>DZGitrs - The most active GitHub users in Algeria</title>
+        <title>DZGitrs - The most active GitHub users in </title>
         <meta name="viewport" content="width=device-width"></meta>
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -18,29 +20,19 @@ export default function Home(data) {
             DZGitrs!
           </span>
         </h1>
-        <p className="my-5 text-1xl">
-          Last Update:{' '}
-          <code className="p-3 font-mono text-lg bg-gray-100 rounded-md">
-            <TimeAgo date={header.lastUpdate} />
-          </code>
-        </p>
+        
 
         <div className="flex flex-wrap items-center justify-around max-w-4xl mt-6 sm:w-full">
-          <table>
-            <thead>
-              <tr>
-                <th>Score</th>
-                <th>User</th>  
-                <th>Contribs</th>
-                <th className='w-28 sm:w-24'>Avatar</th>
-              </tr>
-            </thead>
-            <tbody> 
+        { countriesList.length ? <ul className='text-left'>
+             
             {
-              users.map(userInfo=> (<UserColumn key={userInfo.score} score={userInfo.score} githubName={userInfo.name} githubUsername={userInfo.username} githubURL={userInfo.URL} contribs={userInfo.contribs} avatarURL={userInfo.avatar} className='shadow'></UserColumn>))
+              countriesList.map(country=> (
+                <li className='border-green-500 duration-200 ease-in-out	hover:border-l-4 hover:pl-2 '>
+                  <Link href={country.slug}>{country.country}</Link>
+                </li>
+              ))
             }
-            </tbody>
-          </table>
+          </ul> :'لا توجد احصائيات'  }
         </div>
       </main>
 
@@ -67,17 +59,16 @@ export default function Home(data) {
   )
 }
 
-export async function getStaticProps(context) {
-  const res = await fetch(`https://dzgitrs.herokuapp.com/algeria`)
-  const data = await res.json()
-
-  if (!data) {
+export async function getStaticProps() {
+  const res = await fetch(`https://dzgitrs.herokuapp.com/get_countries`)
+  const countriesList = await res.json()
+  if (!countriesList) {
     return {
       notFound: true,
     }
   }
 
   return {
-    props: { data }, // will be passed to the page component as props
+    props: { countriesList }, // will be passed to the page component as props
   }
 }
