@@ -95,6 +95,6 @@ const paths = con.map((e)=>{ return {params:{slug:e}}})
 export async function getStaticPaths() {
   return {
     paths,
-    fallback: true,
+    fallback: false,
   }
 }
