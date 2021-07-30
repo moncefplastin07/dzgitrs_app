@@ -3,6 +3,8 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import TimeAgo from 'react-timeago'
 import UserColumn from "../components/UserColumn.js";
+import CountUp from 'react-countup';
+
 export default function Home(data) {
   const { query } = useRouter()
   const { users, header } = data.data
@@ -18,20 +20,26 @@ export default function Home(data) {
         <h1 className="text-4xl font-bold lg:text-6xl border-solid border-b-4 border-green-500">
           Welcome to{' '}
           <span className="text-green-600">
-            DZGitrs!
+            <Link href='/'>DZGitrs!</Link>
           </span>
         </h1>
         <h2 className='text-lg lg:text-xl'>This is a list of most active GitHub users in <b className='text-green-600'>{header.country}</b></h2>
         <p className="my-16 text-1xl">
           <b>Last Update:</b>{' '}
           <code className="p-3 font-mono text-lg bg-gray-100 rounded-md">
-            <TimeAgo date={header.lastUpdate} />
+            <TimeAgo date={new Date(header.lastUpdate.split('UTC')[0]) || new Date()} />
           </code>
         </p>
+        <p>There are <span className='font-bold'>
+          <CountUp
+            start={0}
+            end={header.totalUsersNumber}
+            duration={1}
+          ></CountUp></span> users on the GitHub who say they are from Algeria</p>
         <ul className='grid grid-cols-3 gap-4'>
-            <li className={`hover:font-blod ${query.slug == header.country.toLowerCase()? 'bg-green-300 font-blod' : ''}`}><Link href={`${header.country.toLowerCase()}`}>Commits</Link></li>
-            <li className={`hover:font-blod ${query.slug == `${header.country.toLowerCase()}_public`? 'bg-green-300 font-blod' : ''} px-5 border-solid border-r-2 border-l-2 border-green-500`}><Link href={`${header.country.toLowerCase()}_public`}>Contributions</Link></li>
-            <li className={`hover:font-blod ${query.slug == `${header.country.toLowerCase()}_private`? 'bg-green-300 font-blod' : ''}`}><Link href={`${header.country.toLowerCase()}_private`}>All</Link></li>
+            <li className={`hover:font-bold ${query.slug == header.country.toLowerCase()? 'bg-green-300 font-bold' : 'hover:bg-green-200'}`}><Link href={`/${header.country.toLowerCase()}`}>Commits</Link></li>
+            <li className={`hover:font-bold ${query.slug == `${header.country.toLowerCase()}_public`? 'bg-green-300 font-bold' : 'hover:bg-green-200'} px-5 border-solid border-r-2 border-l-2 border-green-500`}><Link href={`/${header.country.toLowerCase()}_public`}>Contributions</Link></li>
+            <li className={`hover:font-bold ${query.slug == `${header.country.toLowerCase()}_private`? 'bg-green-300 font-bold' : 'hover:bg-green-200'}`}><Link href={`/${header.country.toLowerCase()}_private`}>All</Link></li>
           </ul>
         <div className="flex flex-wrap items-center justify-around max-w-4xl sm:w-full">
           
