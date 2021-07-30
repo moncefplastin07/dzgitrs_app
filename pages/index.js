@@ -59,7 +59,7 @@ export default function Home(data) {
   )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const res = await fetch(`https://dzgitrs.herokuapp.com/get_countries`)
   const countriesList = await res.json()
   if (!countriesList) {
