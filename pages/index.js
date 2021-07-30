@@ -27,7 +27,7 @@ export default function Home(data) {
              
             {
               countriesList.map(country=> (
-                <li className='border-green-500 duration-200 ease-in-out	hover:border-l-4 hover:pl-2 '>
+                <li key={country} className='border-green-500 duration-200 ease-in-out	hover:border-l-4 hover:pl-2 '>
                   <Link href={country.slug}>{country.country}</Link>
                 </li>
               ))
