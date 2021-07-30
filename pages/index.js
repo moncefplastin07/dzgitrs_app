@@ -34,7 +34,7 @@ export default function Home(data) {
         </h1>
         <ToggleDarkModeButton onClick={toggleDarkMode} isDarkMode={isDarkMode} />
         <div className="flex flex-wrap items-center justify-around max-w-4xl mt-6 sm:w-full">
-        { countriesList.length ? <ul className='text-left grid grid-cols-4 gap-4'>
+        { countriesList.length ? <ul className='text-left grid grid-cols-4 xs:grid-cols-2 xs:text-center gap-4'>
              
             {
               countriesList.map(country=> (
