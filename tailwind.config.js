@@ -5,7 +5,12 @@ module.exports = {
   theme: {
     rotate: {
       '360': '360deg',
-     }
+     },
+     extend: {
+      screens: {
+        'xs': {'max': '639px'},
+      },
+    },
   },
   variants: {
     extend: {},
