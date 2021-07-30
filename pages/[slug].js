@@ -29,9 +29,9 @@ export default function Home(data) {
           </code>
         </p>
         <ul className='grid grid-cols-3 gap-4'>
-            <li className={`${query.slug == header.country.toLowerCase()? 'bg-green-300' : ''}`}><Link href={`${header.country.toLowerCase()}`}>Commits</Link></li>
-            <li className={`${query.slug == `${header.country.toLowerCase()}_public`? 'bg-green-300' : ''} px-5 border-solid border-r-2 border-l-2 border-green-500`}><Link href={`${header.country.toLowerCase()}_public`}>Contributions</Link></li>
-            <li className={`${query.slug == `${header.country.toLowerCase()}_private`? 'bg-green-300' : ''}`}><Link href={`${header.country.toLowerCase()}_private`}>All</Link></li>
+            <li className={`hover:font-blod ${query.slug == header.country.toLowerCase()? 'bg-green-300 font-blod' : ''}`}><Link href={`${header.country.toLowerCase()}`}>Commits</Link></li>
+            <li className={`hover:font-blod ${query.slug == `${header.country.toLowerCase()}_public`? 'bg-green-300 font-blod' : ''} px-5 border-solid border-r-2 border-l-2 border-green-500`}><Link href={`${header.country.toLowerCase()}_public`}>Contributions</Link></li>
+            <li className={`hover:font-blod ${query.slug == `${header.country.toLowerCase()}_private`? 'bg-green-300 font-blod' : ''}`}><Link href={`${header.country.toLowerCase()}_private`}>All</Link></li>
           </ul>
         <div className="flex flex-wrap items-center justify-around max-w-4xl sm:w-full">
           
