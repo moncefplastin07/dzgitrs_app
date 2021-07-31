@@ -26,7 +26,7 @@ export default function Home({errorCode, data}) {
     <div className={`${isDarkMode ? 'dark' : ''}`}>
     <div className='dark:bg-black dark:text-white font-mono flex flex-col items-center justify-center min-h-screen py-2'>
       <Head>
-        <title>DZGitrs - 404 ERROR- Page not found</title>
+        <title>DZGitrs - The most active GitHub users in {header.country}</title>
         <meta name="viewport" content="width=device-width"></meta>
         <link rel="icon" href="/favicon.ico" />
       </Head>
