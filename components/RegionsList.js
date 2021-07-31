@@ -17,7 +17,7 @@ export default function RegionsList({allRegionsList}) {
   return (
 
     <div className="dark:bg-black dark:text-white font-mono flex flex-col items-center ring-inset min-h-screen py-2">
-        <input onChange={searchByRegion} placeholder='Search ..'></input>
+        <input onChange={searchByRegion} placeholder='Search ..' className='dark:bg-black'></input>
         <div className="flex flex-wrap items-center justify-around max-w-4xl mt-6 sm:w-full">
         { regionsList?.length ? <ul className='text-left grid grid-cols-4 xs:grid-cols-2 xs:text-center gap-4'>
              
