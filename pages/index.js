@@ -11,10 +11,9 @@ export default function Home({regionsList}) {
     }
   })
   const toggleDisplayTheme = () => {
-    console.log(displayTheme)
     const newDisplayTheme = displayTheme == 'light' ? 'dark' : 'light'
-      window.localStorage.setItem('displayTheme', newDisplayTheme)
-      return newDisplayTheme
+    window.localStorage.setItem('displayTheme', newDisplayTheme)
+    return newDisplayTheme
   };
   
   return (
@@ -33,7 +32,7 @@ export default function Home({regionsList}) {
             DZGitrs!
           </span>
         </h1>
-        <ToggleDisplayThemeButton onClick={setDisplayTheme(toggleDisplayTheme())} displayTheme={displayTheme} />
+        <ToggleDisplayThemeButton onClick={()=>setDisplayTheme(toggleDisplayTheme())} displayTheme={displayTheme} />
         <RegionsList allRegionsList={regionsList} />
       </main>
       <Footer/>

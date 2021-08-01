@@ -18,10 +18,9 @@ export default function Home({errorCode, data}) {
     }
   })
   const toggleDisplayTheme = () => {
-    console.log(displayTheme)
     const newDisplayTheme = displayTheme == 'light' ? 'dark' : 'light'
-      window.localStorage.setItem('displayTheme', newDisplayTheme)
-      return newDisplayTheme
+    window.localStorage.setItem('displayTheme', newDisplayTheme)
+    return newDisplayTheme
   };
   if (query.slug.startsWith('israel') || errorCode == 404) {
     return(<Error statusCode={404} />)
