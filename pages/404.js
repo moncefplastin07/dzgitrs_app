@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import React, { useState } from 'react';
 import Footer from "../components/Footer.js"
-import ToggleDarkModeButton from "../components/ToggleDarkModeButton.js"
+import ToggleDisplayThemeButton from '../components/ToggleDisplayThemeButton.js'
 export default function Error404() {  
   const [isDarkMode, setDarkMode] = useState(false);
   
