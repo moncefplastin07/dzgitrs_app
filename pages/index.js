@@ -1,24 +1,24 @@
 import Head from 'next/head'
-import Link from 'next/link'
-import { useRouter } from 'next/router'
-import TimeAgo from 'react-timeago'
-import UserColumn from "../components/UserColumn.js";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Footer from '../components/Footer.js'
-import ToggleDarkModeButton from '../components/ToggleDarkModeButton.js'
+import ToggleDisplayThemeButton from '../components/ToggleDisplayThemeButton.js'
 import RegionsList from '../components/RegionsList.js'
 export default function Home({regionsList}) {
-  const [isDarkMode, setDarkMode] = useState(false);
-  const toggleDarkMode = () => {
-    if (isDarkMode){
-      setDarkMode(false)
-    }else{
-      setDarkMode(true)
+  const [displayTheme, setDisplayTheme] = useState('light');
+  useEffect(()=>{
+    if(window.localStorage.displayTheme){
+      setDisplayTheme(window.localStorage.displayTheme)
     }
+  })
+  const toggleDisplayTheme = () => {
+    console.log(displayTheme)
+    const newDisplayTheme = displayTheme == 'light' ? 'dark' : 'light'
+      window.localStorage.setItem('displayTheme', newDisplayTheme)
+      return newDisplayTheme
   };
   
   return (
-  <div className={`${isDarkMode ? 'dark' : ''}`}>
+  <div className={`${displayTheme == 'dark' ? 'dark' : ''}`}>
     <div className="dark:bg-black dark:text-white font-mono flex flex-col items-center justify-center min-h-screen py-2">
       <Head>
         <title>DZGitrs - The most active GitHub By geographic region </title>
@@ -33,7 +33,7 @@ export default function Home({regionsList}) {
             DZGitrs!
           </span>
         </h1>
-        <ToggleDarkModeButton onClick={toggleDarkMode} isDarkMode={isDarkMode} />
+        <ToggleDisplayThemeButton onClick={setDisplayTheme(toggleDisplayTheme())} displayTheme={displayTheme} />
         <RegionsList allRegionsList={regionsList} />
       </main>
       <Footer/>

@@ -1,11 +1,5 @@
-import Head from 'next/head'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
-import TimeAgo from 'react-timeago'
-import UserColumn from "../components/UserColumn.js";
 import React, { useState } from 'react';
-import Footer from '../components/Footer.js'
-import ToggleDarkModeButton from '../components/ToggleDarkModeButton.js'
 export default function RegionsList({allRegionsList}) {
   const [regionsList, setRegionsList] = useState(allRegionsList);
 

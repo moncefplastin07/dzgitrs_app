@@ -5,17 +5,23 @@ import Error from 'next/error'
 import TimeAgo from 'react-timeago'
 import UserColumn from "../components/UserColumn.js";
 import CountUp from 'react-countup';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Footer from "../components/Footer.js"
-import ToggleDarkModeButton from "../components/ToggleDarkModeButton.js"
+import ToggleDisplayThemeButton from "../components/ToggleDisplayThemeButton.js"
 export default function Home({errorCode, data}) {
   const { query } = useRouter()
   
-  const [isDarkMode, setDarkMode] = useState(false);
-  
-  const toggleDarkMode = () => {
-      setDarkMode(!isDarkMode)
-      window.localStorage.setItem('isDarkMode', !isDarkMode)
+  const [displayTheme, setDisplayTheme] = useState('light');
+  useEffect(()=>{
+    if(window.localStorage.displayTheme){
+      setDisplayTheme(window.localStorage.displayTheme)
+    }
+  })
+  const toggleDisplayTheme = () => {
+    console.log(displayTheme)
+    const newDisplayTheme = displayTheme == 'light' ? 'dark' : 'light'
+      window.localStorage.setItem('displayTheme', newDisplayTheme)
+      return newDisplayTheme
   };
   if (query.slug.startsWith('israel') || errorCode == 404) {
     return(<Error statusCode={404} />)
@@ -23,14 +29,14 @@ export default function Home({errorCode, data}) {
 
   const { users, header } = data.data
   return (
-    <div className={`${isDarkMode ? 'dark' : ''}`}>
+    <div className={`${displayTheme == 'dark' ? 'dark' : ''}`}>
     <div className='dark:bg-black dark:text-white font-mono flex flex-col items-center justify-center min-h-screen py-2'>
       <Head>
         <title>DZGitrs - The most active GitHub users in {header.country}</title>
         <meta name="viewport" content="width=device-width"></meta>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <ToggleDarkModeButton onClick={toggleDarkMode} isDarkMode={isDarkMode} />
+      <ToggleDisplayThemeButton onClick={()=>{setDisplayTheme(toggleDisplayTheme()); }} displayTheme={displayTheme} />
       <main className="flex flex-col items-center justify-center flex-1 text-center">
         <h1 className="text-4xl font-bold lg:text-6xl border-solid border-b-4 border-green-500">
           Welcome to{' '}
