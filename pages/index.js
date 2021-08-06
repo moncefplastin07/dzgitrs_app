@@ -3,8 +3,10 @@ import React, { useState, useEffect } from 'react';
 import Footer from '../components/Footer.js'
 import ToggleDisplayThemeButton from '../components/ToggleDisplayThemeButton.js'
 import RegionsList from '../components/RegionsList.js'
+import Alert from '../components/Alert.js'
 export default function Home({regionsList}) {
   const [displayTheme, setDisplayTheme] = useState('light');
+  const [alert, setAlert] = useState(false)
   useEffect(()=>{
     if(window.localStorage.displayTheme){
       setDisplayTheme(window.localStorage.displayTheme)
@@ -15,7 +17,10 @@ export default function Home({regionsList}) {
     window.localStorage.setItem('displayTheme', newDisplayTheme)
     return newDisplayTheme
   };
-  
+  const pushAlert = (alert)=>{
+    setAlert(alert)
+    setTimeout(()=> pushAlert(false), 5000)
+  }
   return (
   <div className={`${displayTheme == 'dark' ? 'dark' : ''}`}>
     <div className="dark:bg-black dark:text-white font-mono flex flex-col items-center justify-center min-h-screen py-2">
@@ -24,7 +29,7 @@ export default function Home({regionsList}) {
         <meta name="viewport" content="width=device-width"></meta>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
+      { alert ? <Alert {...alert} /> : ''}
       <main className="flex flex-col items-center justify-center flex-1 text-center">
         <h1 className="text-4xl font-bold lg:text-6xl">
           Welcome to{' '}
@@ -33,7 +38,7 @@ export default function Home({regionsList}) {
           </span>
         </h1>
         <ToggleDisplayThemeButton onClick={()=>setDisplayTheme(toggleDisplayTheme())} displayTheme={displayTheme} />
-        <RegionsList allRegionsList={regionsList} />
+        <RegionsList allRegionsList={regionsList} pushAlert={pushAlert}/>
       </main>
       <Footer/>
     </div>
