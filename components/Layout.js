@@ -23,19 +23,21 @@ class Layout extends Component {
   }
   render() {
     return (
-      <div className={`${this.state.displayTheme} `}>
+      <div className={`${this.state.displayTheme}`}>
         <Head>
           <title>{this.props.title}</title>
           <meta name="viewport" content="width=device-width"></meta>
           <link rel="icon" href="/favicon.ico" />
         </Head>
-        <ToggleDisplayThemeButton
-          onClick={() =>
-            this.setState({ displayTheme: this.toggleDisplayTheme() })}
-          displayTheme={this.state.displayTheme}
-        />
-        {this.props.children}
-        <Footer />
+        <div className='font-mono dark:bg-black dark:text-white '>
+          <ToggleDisplayThemeButton
+            onClick={() =>
+              this.setState({ displayTheme: this.toggleDisplayTheme() })}
+            displayTheme={this.state.displayTheme}
+          />
+          {this.props.children}
+          <Footer />
+        </div>
       </div>
     );
   }

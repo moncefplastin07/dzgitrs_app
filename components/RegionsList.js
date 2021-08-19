@@ -13,7 +13,7 @@ export default function RegionsList({ allRegionsList, pushAlert }) {
 
   return (
     <div
-      className="dark:bg-black dark:text-white font-mono flex flex-col items-center ring-inset min-h-screen py-2"
+      className="dark:bg-black dark:text-white  flex flex-col items-center ring-inset min-h-screen py-2"
     >
       <input
         onChange={searchByRegion}

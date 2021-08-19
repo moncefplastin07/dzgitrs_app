@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
     <footer
-      className="font-mono flex items-center flex-col justify-center w-full h-24 border-t text-center"
+      className="flex items-center flex-col justify-center w-full border-t text-center py-1"
     >
       <p className="my-5 text-1xl">
         <span
@@ -31,7 +31,7 @@ export default function Footer() {
           <a href="https://twitter.com/moncefplastin07/">Twitter</a>
         </span>
         <span>{" "}.{" "}</span>
-        <span className="pb-5 font-mono">
+        <span>
           <a href="https://facebook.com/moncefplastin07/">Facebook</a>
         </span>
       </p>

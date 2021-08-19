@@ -24,7 +24,7 @@ export default function Home({ regionsList }) {
   return (
     <Layout>
       <div
-        className="dark:bg-black dark:text-white font-mono flex flex-col items-center justify-center min-h-screen py-2"
+        className="dark:bg-black dark:text-white flex flex-col items-center justify-center min-h-screen py-2"
       >
         <Head>
           <title>DZGitrs - The most active GitHub By geographic region</title>
@@ -43,7 +43,6 @@ export default function Home({ regionsList }) {
           </h1>
           <RegionsList allRegionsList={regionsList} pushAlert={pushAlert} />
         </main>
-        <Footer />
       </div>
     </Layout>
   );

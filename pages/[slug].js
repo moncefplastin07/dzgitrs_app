@@ -22,7 +22,7 @@ export default function Home({ errorCode, data }) {
       title={`DZGitrs - The most active GitHub users in ${header.country}`}
     >
       <div
-        className="dark:bg-black dark:text-white font-mono flex flex-col items-center justify-center min-h-screen py-2"
+        className="dark:bg-black dark:text-white  flex flex-col items-center justify-center min-h-screen py-2"
       >
         <main
           className="flex flex-col items-center justify-center flex-1 text-center"
@@ -42,7 +42,7 @@ export default function Home({ errorCode, data }) {
           <p className="my-16 text-1xl">
             <b>Last Update:</b>{" "}
             <code
-              className="p-3 font-mono text-lg bg-gray-100 rounded-md dark:text-black"
+              className="p-3  text-lg bg-gray-100 rounded-md dark:text-black"
             >
               <TimeAgo
                 date={new Date(header.lastUpdate.split("UTC")[0]) || new Date()}
