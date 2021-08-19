@@ -3,7 +3,6 @@ import Link from "next/link";
 import Head from "next/head";
 import Footer from "./Footer";
 import ToggleDisplayThemeButton from "./ToggleDisplayThemeButton";
-import { textChangeRangeIsUnchanged } from "typescript";
 
 class Layout extends Component {
   constructor(props) {
