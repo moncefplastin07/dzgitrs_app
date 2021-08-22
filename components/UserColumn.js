@@ -1,4 +1,3 @@
-import Image from "next/image";
 export default function UserColumn(userInfo) {
   return (
     <tr className="border-dotted border-t-2 border-light-blue-100 x">
