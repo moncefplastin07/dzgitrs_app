@@ -48,7 +48,7 @@ export default function Home({ regionsList }) {
   );
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const res = await fetch(`https://dzgitrs.herokuapp.com/get_countries`);
   const regionsList = await res.json();
   if (!regionsList) {
