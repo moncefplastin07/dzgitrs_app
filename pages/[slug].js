@@ -136,7 +136,7 @@ export async function getStaticPaths() {
   }))
   return {
     paths,
-    fallback: true, // See the "fallback" section below
+    fallback: false, // See the "fallback" section below
   };
 }
 export async function getStaticProps(context) {
