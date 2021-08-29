@@ -139,7 +139,7 @@ export async function getStaticPaths() {
     params: {slug: `${slug}_private`}
   }))
   return {
-    paths:{...paths,...publicPaths, ...privatePaths},
+    paths:[...paths,...publicPaths, ...privatePaths],
     fallback: false, // See the "fallback" section below
   };
 }
