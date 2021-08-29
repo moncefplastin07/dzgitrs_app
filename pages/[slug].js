@@ -7,16 +7,14 @@ import Layout from "../components/Layout.js";
 import UserColumn from "../components/UserColumn.js";
 import CountUp from "react-countup";
 import React, { useEffect, useState } from "react";
-import Footer from "../components/Footer.js";
-import ToggleDisplayThemeButton from "../components/ToggleDisplayThemeButton.js";
 export default function Home({ errorCode, data }) {
   const { query } = useRouter();
-
-  if (query.slug.startsWith("israel") || errorCode == 404) {
+  if (query.slug?.startsWith("israel") || errorCode == 404) {
     return <Error statusCode={404} />;
   }
 
-  const { users, header } = data.data;
+
+  const { users, header } = data?.data;
   return (
     <Layout
       title={`DZGitrs - The most active GitHub users in ${header.country}`}
@@ -128,8 +126,19 @@ export default function Home({ errorCode, data }) {
     </Layout>
   );
 }
-
-export async function getServerSideProps(context) {
+export async function getStaticPaths() {
+  const countriesList = await fetch('https://dzgitrs.herokuapp.com/get_countries')
+  const paths = countriesList.map(({slug})=>({
+    params: {slug},
+    params: {slug:`${slug}_public`},
+    params: {slug:`${slug}private`},
+  }))
+  return {
+    paths,
+    fallback: true, // See the "fallback" section below
+  };
+}
+export async function getStaticProps(context) {
   const res = await fetch(
     `https://dzgitrs.herokuapp.com/${context.params.slug}`,
   );
