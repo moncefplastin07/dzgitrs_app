@@ -127,7 +127,8 @@ export default function Home({ errorCode, data }) {
   );
 }
 export async function getStaticPaths() {
-  const countriesList = await fetch('https://dzgitrs.herokuapp.com/get_countries')
+  const response = await fetch('https://dzgitrs.herokuapp.com/get_countries')
+  const countriesList = await reposnse.json()
   const paths = countriesList.map(({slug})=>({
     params: {slug},
     params: {slug:`${slug}_public`},
