@@ -135,7 +135,7 @@ export async function getStaticPaths() {
   const publicPaths = countriesList.map(({slug})=>({
     params: {slug: `${slug}_public`}
   }))
-  const prevatiPaths = countriesList.map(({slug})=>({
+  const privatePaths = countriesList.map(({slug})=>({
     params: {slug: `${slug}_private`}
   }))
   return {
