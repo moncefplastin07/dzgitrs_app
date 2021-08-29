@@ -130,12 +130,16 @@ export async function getStaticPaths() {
   const response = await fetch('https://dzgitrs.herokuapp.com/get_countries')
   const countriesList = await response.json()
   const paths = countriesList.map(({slug})=>({
-    params: {slug},
-    params: {slug:`${slug}_public`},
-    params: {slug:`${slug}private`},
+    params: {slug}
+  }))
+  const publicPaths = countriesList.map(({slug})=>({
+    params: {slug: `${slug}_public`}
+  }))
+  const prevatiPaths = countriesList.map(({slug})=>({
+    params: {slug: `${slug}_private`}
   }))
   return {
-    paths,
+    paths:{...paths,...publicPaths, ...privatePaths},
     fallback: false, // See the "fallback" section below
   };
 }
@@ -144,6 +148,7 @@ export async function getStaticProps(context) {
     `https://dzgitrs.herokuapp.com/${context.params.slug}`,
   );
   const data = await res.json();
+  console.log(data)
   const errorCode = res.ok ? false : res.status;
   if (!data) {
     return {
